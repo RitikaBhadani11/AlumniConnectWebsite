@@ -136,7 +136,7 @@ const HomePage = () => {
 
       {/* Greeting Section */}
       <div className="text-left text-gray-700 pt-10 pl-10">
-        <h2 className="text-3xl font-bold mb-6 text-pink-600">Hi Ritika 👋</h2>
+        <h2 className="text-3xl font-bold mb-6 text-pink-600">Welcome! 👋</h2>
       </div>
 
       {/* Post creation section */}
