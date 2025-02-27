@@ -6,7 +6,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  /*const handleLogin = () => {
     const storedUserDetails = JSON.parse(localStorage.getItem('userDetails'));
 
     if (storedUserDetails && storedUserDetails.email === email && storedUserDetails.password === password) {
@@ -15,7 +15,34 @@ const Login = () => {
     } else {
       alert('Invalid credentials');
     }
+  };*/
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      const data = await response.json();
+      console.log("Response from server:", data);
+  
+      if (!response.ok) {
+        console.error("Error:", response.status, data.message);
+        alert(data.message);
+        return;
+      }
+  
+      console.log("Login successful!");
+      navigate('/home');
+    } catch (error) {
+      console.error("Login request failed:", error);
+      alert("Network error! Check console.");
+    }
   };
+  
+  
+
 
   return (
     <div className="h-screen w-screen flex items-center justify-center">

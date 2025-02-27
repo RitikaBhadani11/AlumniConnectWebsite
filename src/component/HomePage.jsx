@@ -332,6 +332,27 @@ const HomePage = () => {
               }}
               className="p-2 border-2 border-gray-300 rounded-lg mb-4"
             />
+            <input
+          type="url"
+          placeholder="Enter Registration Form Link"
+          value={newEvent.googleFormLink}
+          onChange={(e) => setNewEvent({ ...newEvent, googleFormLink: e.target.value })}
+          className="w-full p-3 border-2 border-gray-300 rounded-lg mb-4 text-black"
+        />
+        
+        {/* If the googleFormLink exists, render it as a clickable link */}
+        {newEvent.googleFormLink && (
+          <div className="mt-2">
+            <a 
+              href={newEvent.googleFormLink} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-blue-600 hover:text-blue-700"
+            >
+              Click here to access the Registration Form
+            </a>
+          </div>
+        )}
             <button
               onClick={addEvent}
               className="w-full py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700"

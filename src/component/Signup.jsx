@@ -8,14 +8,40 @@ const Signup = () => {
   const navigate = useNavigate();
   
 
-  const handleSignup = () => {
+ /* const handleSignup = () => {
     // Save user details to localStorage
     const userDetails = { username, email, password };
     localStorage.setItem('userDetails', JSON.stringify(userDetails));
     
     // Redirect to login page after successful signup
     navigate('/');
+  };*/
+  const handleSignup = async () => {
+    const userDetails = { username, email, password };
+  
+    try {
+      const response = await fetch("http://localhost:8000/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userDetails),
+      });
+  
+      const data = await response.json();
+      
+      if (response.ok) {
+        alert("Signup Successful! Please log in.");
+        navigate("/login"); // Redirect to login after successful signup
+      } else {
+        alert(`Signup Failed: ${data.message}`);
+      }
+    } catch (error) {
+      console.error("Signup Error:", error);
+      alert("An error occurred. Please try again.");
+    }
   };
+  
 
   const handleLoginRedirect = () => {
     // Redirect to login page if user already has an account

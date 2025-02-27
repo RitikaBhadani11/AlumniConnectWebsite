@@ -1,5 +1,6 @@
 {
   "name": "ems",
+  "homepage": "https://ritikabhadani11.github.io/AlumniConnectWebsite",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,14 +8,28 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
-   
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@shadcn/ui": "^0.0.4",
+    "axios": "^1.7.9",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "daisyui": "^4.12.20",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "gh-pages": "^6.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.475.0",
+    "mongoose": "^8.10.0",
+    "openai": "^4.84.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.4.0",
+    "react-markdown": "^9.0.3",
     "react-router-dom": "^7.0.2",
     "react-toastify": "^10.0.6"
   },
@@ -29,8 +44,13 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
+    "postcss": "^8.5.2",
+    "tailwindcss": "^3.4.17",
     "vite": "^6.0.3"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

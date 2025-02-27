@@ -79,6 +79,58 @@ const ProfilePage = () => {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Prepare data to send to API
+    const profileData = {
+      ...profileDetails,
+      profilePic,
+    };
+
+    try {
+      const response = await fetch('http://localhost:8000/api/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(profileData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save profile');
+      }
+
+      const result = await response.json();
+
+      // Show success message after saving profile via API
+      toast.success("Profile saved successfully!", {
+        style: {
+          color: "black",
+          backgroundColor: "#4caf50",
+          fontSize: "16px",
+          borderRadius: "10px",
+        },
+      });
+
+      // Optionally save to localStorage as well
+      localStorage.setItem('profileDetails', JSON.stringify(profileDetails));
+      if (profilePic) {
+        localStorage.setItem('profilePic', profilePic);
+      }
+
+    } catch (error) {
+      toast.error("Error saving profile. Please try again later.", {
+        style: {
+          color: "black",
+          backgroundColor: "#f44336",
+          fontSize: "16px",
+          borderRadius: "10px",
+        },
+      });
+    }
+  };
+
   const handleBack = () => {
     navigate(-1); // Navigate back to the previous page
   };
@@ -152,7 +204,7 @@ const ProfilePage = () => {
           </div>
 
           {/* Profile Form */}
-          <form className="mt-8 space-y-4">
+          <form onSubmit={handleSubmit} className="mt-8 space-y-4">
             {[{ label: "Name", name: "name" },
               { label: "Username", name: "username" },
               { label: "College Email ID", name: "email" },

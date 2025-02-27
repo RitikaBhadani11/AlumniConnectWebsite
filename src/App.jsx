@@ -8,10 +8,15 @@ import { ToastContainer } from 'react-toastify';  // Import ToastContainer
 import 'react-toastify/dist/ReactToastify.css';   // Import the Toastify CSS
 import AboutUs from './component/AboutUs';
 import ContactUs from './component/ContactUs'; // Import ContactUs component
+import Chatbot from './component/Chatbot';
+import ConnectPeople from './component/ConnectPeople';
+import ViewProfile from './component/ViewProfile'
+
+
 
 const App = () => {
   return (
-    <Router>
+    <Router >
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} /> 
@@ -20,6 +25,14 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} /> {/* Route to ContactUs page */}
+        <Route path="/chatbot" element={<Chatbot />} />
+        <Route path="/connect" element={<ConnectPeople />} />
+        <Route path="/profile/:id" element={<ViewProfile />} /> {/* New route */}
+
+        
+
+
+        
       </Routes>
 
       {/* Add the ToastContainer to show notifications */}

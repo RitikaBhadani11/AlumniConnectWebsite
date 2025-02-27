@@ -21,8 +21,14 @@ const Navbar = () => {
         className="bg-white border-2 border-emerald-600 text-black py-2 px-4 rounded-full"
       />
       <div className="flex space-x-6 items-center">
+        <button onClick={() => handleNavigate('/chatbot')} className="hover:text-emerald-600 text-black">
+          Help
+        </button>
         <button onClick={() => handleNavigate('/home')} className="hover:text-emerald-600 text-black">
           Home
+        </button>
+        <button onClick={() => handleNavigate('/connect')} className="hover:text-emerald-600 text-black">
+          Connect People
         </button>
         <button onClick={() => handleNavigate('/about')} className="hover:text-emerald-600 text-black">
           About Us
@@ -45,3 +51,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
